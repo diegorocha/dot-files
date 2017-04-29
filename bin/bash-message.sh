@@ -1,0 +1,1 @@
+/home/diego/bin/bash-message.sh
