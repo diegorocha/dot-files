@@ -142,7 +142,7 @@ if [ -f "${VIRTUALENVWRAPPER}" ]; then
 fi
 
 # Alterações no PATH
-export PATH=$PATH:/usr/local/android-studio/bin/:/home/diego/bin/
+export PATH=$PATH:/usr/local/android-studio/bin/:$HOME/bin/
 
 # Configurações do nvm
 export NVM_DIR="$HOME/.nvm"
