@@ -125,23 +125,28 @@ fi
 #################################
 # Alterações minhas             #
 #################################
+
+# Habilita notificação do git no prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
-source "${GITAWAREPROMPT}/main.sh"
+if [ -f "${GITAWAREPROMPT}/main.sh" ]; then
+    source "${GITAWAREPROMPT}/main.sh"
+    export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+fi
 
-export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+# Virtualenvwrapper
+export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
+if [ -f "${VIRTUALENVWRAPPER}" ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/fontes
+    source "${VIRTUALENVWRAPPER}"
+fi
 
-
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
-
-alias lampada='/usr/bin/python /home/diego/fontes/ReleEthernet/linux/releEthernet.py'
-
+# Alterações no PATH
 export PATH=$PATH:/usr/local/android-studio/bin/:/home/diego/bin/
 
+# Configurações do nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 
 # Variaveis de ambiente customizadas
 export DEPLOY_ENV=dev
