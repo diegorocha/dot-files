@@ -131,6 +131,10 @@ export GITAWAREPROMPT=~/.bash/git-aware-prompt
 if [ -f "${GITAWAREPROMPT}/main.sh" ]; then
     source "${GITAWAREPROMPT}/main.sh"
     export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+    # Personaliza o prompt para Redhat like (CentOS/Fedora)
+    if [ -f /etc/redhat-release ]; then
+      export PS1="[\u@\h \W]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+    fi
 fi
 
 # Virtualenvwrapper
